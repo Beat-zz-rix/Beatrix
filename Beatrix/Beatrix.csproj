@@ -41,6 +41,7 @@
       <HintPath>..\packages\RavenDB.1.0.0.13\Lib\4.0\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -59,6 +60,7 @@
     <Compile Include="Controllers\BeatrixControllerFactory.cs" />
     <Compile Include="Controllers\IBeatrixControllerFactory.cs" />
     <Compile Include="Conventions\BeatrixConventions.cs" />
+    <Compile Include="Data\Indexes\Pages_ByUrl.cs" />
     <Compile Include="Handlers\BeatrixUrlRewriteHandler.cs" />
     <Compile Include="IPathResolver.cs" />
     <Compile Include="Pages\BeatrixPage.cs" />
@@ -75,6 +77,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
