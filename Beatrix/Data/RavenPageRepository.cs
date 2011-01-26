@@ -5,6 +5,8 @@ using System.Text;
 using Raven.Client;
 using Raven.Client.Util;
 using Beatrix.Pages;
+using Raven.Client.Indexes;
+using System.Reflection;
 
 namespace Beatrix.Data
 {
@@ -21,6 +23,8 @@ namespace Beatrix.Data
         private void Init()
         {
             store.Initialize();
+            IndexCreation.CreateIndexes(Assembly.GetExecutingAssembly(), store);
+
             using (var session = store.OpenSession())
             {
                 session.Advanced.Conventions.FindTypeTagName = t => typeof(BeatrixPage).IsAssignableFrom(t)
@@ -47,8 +51,9 @@ namespace Beatrix.Data
                 if (url == null) return null;
 
                 return session
-                    .Query<BeatrixPage>()
-                    .FirstOrDefault(p => p.Url == url.UrlString);
+                    .Advanced.LuceneQuery<BeatrixPage>("Pages/ByUrl")
+                    .Where(string.Concat("Url:", url.UrlString))
+                    .FirstOrDefault();
             }
         }
 
