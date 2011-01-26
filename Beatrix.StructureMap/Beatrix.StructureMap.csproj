@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D968E3A5-679E-4A3A-92EF-50229B060090}</ProjectGuid>
+    <ProjectGuid>{4C3D8ED8-1110-413A-A40B-CE1C7A9330D4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Beatrix</RootNamespace>
-    <AssemblyName>Beatrix</AssemblyName>
+    <RootNamespace>Beatrix.StructureMap</RootNamespace>
+    <AssemblyName>Beatrix.StructureMap</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,14 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\RavenDB.1.0.0.13\Lib\4.0\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Abstractions">
-      <HintPath>..\packages\RavenDB.1.0.0.13\Lib\4.0\Raven.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Client.Lightweight">
-      <HintPath>..\packages\RavenDB.1.0.0.13\Lib\4.0\Raven.Client.Lightweight.dll</HintPath>
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\structuremap.2.6.1.0\lib\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,26 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BeatrixPagePathResolver.cs" />
-    <Compile Include="Controllers\BeatrixController.cs" />
-    <Compile Include="Controllers\BeatrixControllerFactory.cs" />
-    <Compile Include="Controllers\IBeatrixControllerFactory.cs" />
-    <Compile Include="Conventions\BeatrixConventions.cs" />
-    <Compile Include="IPathResolver.cs" />
-    <Compile Include="Modules\BeatrixUrlRewriteModule.cs" />
-    <Compile Include="Pages\BeatrixPage.cs" />
-    <Compile Include="Controllers\ControllerAttribute.cs" />
-    <Compile Include="Data\IPageRepository.cs" />
-    <Compile Include="Data\IRepository.cs" />
-    <Compile Include="Data\RavenPageRepository.cs" />
-    <Compile Include="Pages\IDateControlled.cs" />
-    <Compile Include="Pages\IPublishable.cs" />
-    <Compile Include="Pages\IRoleControlled.cs" />
+    <Compile Include="BeatrixStructureMapControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Pages\Url.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Beatrix\Beatrix.csproj">
+      <Project>{D968E3A5-679E-4A3A-92EF-50229B060090}</Project>
+      <Name>Beatrix</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

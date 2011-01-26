@@ -3,24 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
-using Beatrix.Data;
 using System.Web.Mvc;
 using Beatrix.Controllers;
-using Beatrix.Conventions;
 
-namespace Beatrix.Handlers
+namespace Beatrix.Modules
 {
-    public class BeatrixUrlRewriteHandler : IHttpHandler
+    public class BeatrixUrlRewriteModule : IHttpModule
     {
-        public bool IsReusable
+        public void Dispose()
         {
-            get { return true; }
+            // don nothing in particular
         }
 
-        public void ProcessRequest(HttpContext context)
+        public void Init(HttpApplication context)
         {
+            context.BeginRequest += new EventHandler(context_BeginRequest);
+        }
+
+        void context_BeginRequest(object sender, EventArgs e)
+        {
+            var application = sender as HttpApplication;
+            var context = application.Context;
+
             var controllerPath = (ControllerBuilder.Current.GetControllerFactory() as IBeatrixControllerFactory)
                 .GetControllerPath(new HttpRequestWrapper(context.Request).RequestContext);
+
             if (controllerPath != null)
                 context.RewritePath(controllerPath);
         }
