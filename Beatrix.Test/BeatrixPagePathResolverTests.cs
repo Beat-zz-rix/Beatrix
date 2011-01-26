@@ -11,6 +11,7 @@ namespace Beatrix.Test
     [TestFixture]
     public class BeatrixPagePathResolverTests
     {
+
         [Test]
         public void When_called_with_a_page_without_ControllerAttribute_the_correct_url_is_resolved()
         {
@@ -33,6 +34,18 @@ namespace Beatrix.Test
             Assert.AreEqual("/attribute", resolver.ResolvePath(page, "/foo/bar"));
             Assert.AreEqual("/attribute/baz", resolver.ResolvePath(page, "/foo/bar/baz"));
             Assert.AreEqual("/attribute/baz/id", resolver.ResolvePath(page, "/foo/bar/baz/id"));
+        }
+
+        [Test]
+        public void When_called_with_a_page_without_ControllerAttribute_the_correct_url_is_resolved_for_root()
+        {
+            var page = new TestPage { Url = "/" };
+
+            var resolver = new BeatrixPagePathResolver();
+
+            Assert.AreEqual("/test", resolver.ResolvePath(page, "/"));
+            Assert.AreEqual("/test/baz", resolver.ResolvePath(page, "/baz"));
+            Assert.AreEqual("/test/baz/id", resolver.ResolvePath(page, "/baz/id"));
         }
     }
 

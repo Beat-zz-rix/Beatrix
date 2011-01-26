@@ -23,7 +23,6 @@ namespace Beatrix.Data
         private void Init()
         {
             store.Initialize();
-            IndexCreation.CreateIndexes(Assembly.GetExecutingAssembly(), store);
 
             using (var session = store.OpenSession())
             {
@@ -32,14 +31,19 @@ namespace Beatrix.Data
                     : Inflector.Pluralize(t.Name);
                 RebuildUrlCache(session);
             }
+
+            IndexCreation.CreateIndexes(Assembly.GetExecutingAssembly(), store);
         }
 
         private void RebuildUrlCache(IDocumentSession session)
         {
             Urls = session
-                .Query<BeatrixPage>()
+                .Advanced
+                .LuceneQuery<BeatrixPage>("Raven/DocumentsByEntityName")
+                .Take(10000)
                 .Select(p => new Url(p.Url))
-                .OrderByDescending(u => u.SegmentCount);
+                .OrderByDescending(u => u.SegmentCount)
+                .ToList();
         }
 
         public BeatrixPage GetPage(string rawUrl)

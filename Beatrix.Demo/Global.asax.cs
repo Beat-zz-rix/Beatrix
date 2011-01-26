@@ -42,8 +42,8 @@ namespace Beatrix.Demo
 
             var pageRepository = IoC.Initialize().GetInstance<IPageRepository>();
 
-            pageRepository.Insert(new InfoPage { Id = 1, IsPublished = true, Url = "/", Title = "Beatrix Demo", Headline = "Welcome to the Beatrix Demo", Text = "Basic setup" });
-            pageRepository.Insert(new InfoPage { Id = 2, IsPublished = true, Url = "/about", Title = "Beatrix Demo - About", Headline = "About Beatrix CMS", Text = "This is a" });
+            pageRepository.Insert(new InfoPage { Id = 1, IsPublished = true, Url = "/", Title = "Beatrix Demo", Headline = "Welcome to the Beatrix Demo", Text = "This is an InfoPage" });
+            pageRepository.Insert(new InfoPage { Id = 2, IsPublished = true, Url = "/about", Title = "Beatrix Demo - About", Headline = "About Beatrix CMS", Text = "This is also an InfoPage" });
         }
     }
 }

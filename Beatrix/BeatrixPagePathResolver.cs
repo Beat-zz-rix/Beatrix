@@ -21,11 +21,15 @@ namespace Beatrix
                 ? controllerAttribute.ControllerType.Name
                 : BeatrixConventions.Instance.GetControllerNameFromPage(page);
 
+            int urlStartIndex = (page.Url == "/")
+                ? 0
+                : page.Url.Length;
+
             return string.Concat(
                 "/",
                 BeatrixConventions.Instance.GetRouteFromControllerName(controllerName),
-                rawUrl.Substring(page.Url.Length)
-                ).ToLower();
+                rawUrl.Substring(urlStartIndex)
+                ).TrimEnd('/').ToLower();
         }
     }
 }

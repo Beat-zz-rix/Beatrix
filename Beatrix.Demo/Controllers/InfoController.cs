@@ -17,7 +17,14 @@ namespace Beatrix.Demo.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Method = "Index()";
             return View(Page);
+        }
+
+        public ActionResult Action(string id=null)
+        {
+            ViewBag.Method = string.Format("Action({0})", id);
+            return View("Index", Page);
         }
 
     }
