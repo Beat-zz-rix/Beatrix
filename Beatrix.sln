@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beatrix.Test", "Beatrix.Test\Beatrix.Test.csproj", "{BDDC0DD7-8315-449F-A0FA-EC93C6E3ACE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beatrix.StructureMap", "Beatrix.StructureMap\Beatrix.StructureMap.csproj", "{4C3D8ED8-1110-413A-A40B-CE1C7A9330D4}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Beatrix.vsmdi
@@ -35,6 +37,10 @@ Global
 		{BDDC0DD7-8315-449F-A0FA-EC93C6E3ACE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDDC0DD7-8315-449F-A0FA-EC93C6E3ACE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDDC0DD7-8315-449F-A0FA-EC93C6E3ACE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C3D8ED8-1110-413A-A40B-CE1C7A9330D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C3D8ED8-1110-413A-A40B-CE1C7A9330D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C3D8ED8-1110-413A-A40B-CE1C7A9330D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C3D8ED8-1110-413A-A40B-CE1C7A9330D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

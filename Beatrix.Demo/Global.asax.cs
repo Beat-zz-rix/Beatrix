@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Beatrix.StructureMap;
+using Beatrix.Demo.SM;
+using Beatrix.Data;
+using Beatrix.Demo.PageTypes;
 
 namespace Beatrix.Demo
 {
@@ -35,6 +39,11 @@ namespace Beatrix.Demo
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            var pageRepository = IoC.Initialize().GetInstance<IPageRepository>();
+
+            pageRepository.Insert(new InfoPage { Id = 1, IsPublished = true, Url = "/", Title = "Beatrix Demo", Headline = "Welcome to the Beatrix Demo", Text = "Basic setup" });
+            pageRepository.Insert(new InfoPage { Id = 2, IsPublished = true, Url = "/about", Title = "Beatrix Demo - About", Headline = "About Beatrix CMS", Text = "This is a" });
         }
     }
 }

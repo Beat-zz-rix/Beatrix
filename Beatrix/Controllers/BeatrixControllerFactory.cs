@@ -53,6 +53,9 @@ namespace Beatrix.Controllers
 
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
         {
+            if (controllerType == null)
+                return null;
+
             if (!typeof(BeatrixController).IsAssignableFrom(controllerType))
                 return base.GetControllerInstance(requestContext, controllerType);
 
